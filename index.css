@@ -1,0 +1,89 @@
+:root {
+    --scale: 20px;
+    --game_purple: #b7b6ff;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(203, 225, 248);
+}
+
+#canvas {
+    background-color: var(--game_purple);
+    box-shadow: black 0px 0px 7px;
+    position: relative;
+    height: 400px;
+    width: 700px;
+    margin: auto;
+}
+
+#canvas .title-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 calc(var(--scale) / 2);
+    line-height: calc(var(--scale) * 1.5);
+    background-color: black;
+    height: calc(var(--scale) * 1.5);
+}
+
+#canvas .title-bar .body-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin: 0;
+}
+
+/* Text */
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+}
+
+/* Game elements */
+.circle {
+    width: calc(var(--scale) * (2/ 3));
+    height: calc(var(--scale) * (2/ 3));
+    border: solid calc(var(--scale) / 5) black;
+    border-radius: var(--scale);
+}
+
+.circle.coin {
+    background-color: yellow;
+}
+
+.circle.obstacle {
+    background-color: blue;
+}
+
+.game-tile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(var(--scale) * 2);
+    width: calc(var(--scale) * 2);
+}
+
+.game-tile.white {
+    background-color: white;
+}
+
+.game-tile.purple {
+    background-color: #e7e8ff;
+}
+
+/* Boilerplate */
+.noselect {
+    /* iOS Safari */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Konqueror HTML */
+    -khtml-user-select: none;
+    /* Old versions of Firefox */
+    -moz-user-select: none;
+    /* Internet Explorer/Edge */
+    -ms-user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+    user-select: none;
+}
