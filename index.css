@@ -1,6 +1,7 @@
 :root {
     --scale: 20px;
     --game_purple: #b7b6ff;
+    --border-size: 8px;
     margin: 0;
 }
 
@@ -21,7 +22,7 @@ body {
     position: relative;
     width: calc(100% - 20px);
     height: calc(100% - 50px);
-    margin: 10px;
+    margin: var(--border-size);
     z-index: 1;
 }
 
@@ -38,18 +39,19 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    margin: 5px;
-    width: calc(var(--scale) * 2 + 10px);
-    height: calc(var(--scale) * 2 + 10px);
+    margin: calc(var(--border-size) / 2);
+    width: calc(var(--scale) * 2 + var(--border-size));
+    height: calc(var(--scale) * 2 + var(--border-size));
     background-color: black;
 }
 
 #player {
     width: var(--scale);
     height: var(--scale);
-    border: 5px solid black;
+    border: calc(var(--border-size) /2) solid black;
     background-color: red;
     position: absolute;
+    z-index: 10;
     top: 0;
     left: 0;
 }

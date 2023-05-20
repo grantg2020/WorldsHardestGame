@@ -71,18 +71,24 @@ class GameMap {
         {
             let x = 0;
             let y = 0;
+            let xCount = 0.0;
+            let yCount = 0.0;
 
             this.startPositions.forEach(tile => {
-                x += tile.x;
-                y += tile.y;
+                x = (tile.x > x) ? tile.x : x;
+                y = (tile.y > y) ? tile.y : y;
             });
+
+            console.log(x, y);
+
+            // Adjust for 0 index
+            x++;
+            y++;
 
             x /= 2.0;
             y /= 2.0;
 
             this.startLocation = { 'x': x, 'y': y };
-
-            setPlayerLocation(x, y);
         }
 
     }
