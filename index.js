@@ -1,6 +1,9 @@
 const SCALE = 40; // px
 const BORDER_SIZE = 5; // px
 
+const MAX_GRID_WIDTH = 20; // num tiles
+const MAX_GRID_HEIGHT = 10; // num tiles
+
 function generateTiles(map) {
     if (!(map instanceof GameMap)) throw "Invalid map";
 
@@ -55,17 +58,31 @@ class GameMap {
         this.height = height;
 
         this.positions = [];
+        this.positionGrid = [];
+
+        for (let i = 0; i < MAX_GRID_HEIGHT; i++) { // loop rows
+            const row = [];
+            for (let j = 0; j < MAX_GRID_WIDTH; j++) { // loop cols
+                row.push(null);
+            }
+            this.positionGrid.push(row);
+        }
+
         this.startPositions.forEach(tile => {
             this.positions.push(tile);
+            this.positionGrid[tile.y][tile.x] = tile;
         });
         this.floorPositions.forEach(tile => {
             this.positions.push(tile);
+            this.positionGrid[tile.y][tile.x] = tile;
         });
         this.checkpoints.forEach(tile => {
             this.positions.push(tile);
+            this.positionGrid[tile.y][tile.x] = tile;
         });
         this.finishPositions.forEach(tile => {
             this.positions.push(tile);
+            this.positionGrid[tile.y][tile.x] = tile;
         });
 
         {
@@ -132,5 +149,13 @@ const gameMap1 = new GameMap(
         new GameTile(5, 4, gameTileTypes.Finish),
     ],
     10, 10);
+
+/*
+[
+    [GameTile, null, null, null, null, null],
+    [GameTile, GameTile, GameTile, null, null, null],
+    ...
+]
+*/
 
 generateTiles(gameMap1);
